@@ -2,7 +2,9 @@ package sg.edu.rp.c346.id20018354.democontextmenutranslation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,20 +29,21 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-
-        if(v==tvTranslatedText){
-            wordClicked="hello";
-        }
-        else if(v==tvTranslatedText2){
-            wordClicked="bye";
-        }
+        Log.v("Context","create context");
         menu.add(0,0,0,"English");
         menu.add(0,1,1,"Italian");
         menu.add(0,2,2,"French");
         menu.add(0,3,3,"Japanese");
         menu.add(0,4,4,"Korean");
         menu.add(0,5,5,"Chinese");
-
+        if(v==tvTranslatedText){
+            wordClicked="hello";
+            Log.v("Context","top view selected");
+        }
+        else if(v==tvTranslatedText2){
+            wordClicked="bye";
+            Log.v("Context","bottom view selected");
+        }
     }
     @Override
     public boolean onContextItemSelected(MenuItem item) {
@@ -75,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
             tvTranslatedText.setText("你好");
             return true;  //menu item successfully handled
         }
-            return super.onContextItemSelected(item); //pass menu item to the superclass implementation
     }
         else if(wordClicked.equalsIgnoreCase("bye")){
             if(item.getItemId()==0) { //check whether the selected menu item ID is 0
@@ -111,5 +113,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onContextItemSelected(item); //pass menu item to the superclass implementation
     }
-
 }
