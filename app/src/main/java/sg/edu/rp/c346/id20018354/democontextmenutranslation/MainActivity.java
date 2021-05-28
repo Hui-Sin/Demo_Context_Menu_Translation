@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     TextView tvTranslatedText;
     TextView tvTranslatedText2;
-
+    TextView tvTranslatedText3;
     String wordClicked="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvTranslatedText=findViewById(R.id.textViewTranslatedText);
         tvTranslatedText2=findViewById(R.id.textViewTranslatedText2);
+        tvTranslatedText3=findViewById(R.id.textViewTranslatedText3);
         registerForContextMenu(tvTranslatedText);
         registerForContextMenu(tvTranslatedText2);
-    }
+        registerForContextMenu(tvTranslatedText3);    }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(v==tvTranslatedText2){
             wordClicked="bye";
+            Log.v("Context","middle view selected");
+        }else{
+            wordClicked="anything";
             Log.v("Context","bottom view selected");
         }
     }
@@ -78,8 +82,7 @@ public class MainActivity extends AppCompatActivity {
             tvTranslatedText.setText("你好");
             return true;  //menu item successfully handled
         }
-    }
-        else if(wordClicked.equalsIgnoreCase("bye")){
+    } else if(wordClicked.equalsIgnoreCase("bye")){
             if(item.getItemId()==0) { //check whether the selected menu item ID is 0
                 //code for action
                 tvTranslatedText2.setText("Bye");
@@ -110,6 +113,38 @@ public class MainActivity extends AppCompatActivity {
                 tvTranslatedText2.setText("再见");
                 return true;  //menu item successfully handled
             }
+        }else{
+            if(item.getItemId()==0) { //check whether the selected menu item ID is 0
+                //code for action
+                tvTranslatedText3.setText("Hello");
+                return true; //menu item successfully handled
+            }
+            else if(item.getItemId()==1) { //check if the selected menu item ID is 1
+                //code for action
+                tvTranslatedText3.setText("nulla");
+                return true;  //menu item successfully handled
+            }
+            else if(item.getItemId()==2) { //check if the selected menu item ID is 1
+                //code for action
+                tvTranslatedText3.setText("n'importe quoi");
+                return true;  //menu item successfully handled
+            }
+            else if(item.getItemId()==3) { //check if the selected menu item ID is 1
+                //code for action
+                tvTranslatedText3.setText("何でも");
+                return true;  //menu item successfully handled
+            }
+            else if(item.getItemId()==4) { //check if the selected menu item ID is 1
+                //code for action
+                tvTranslatedText3.setText("아무것도");
+                return true;  //menu item successfully handled
+            }
+            else if(item.getItemId()==5) { //check if the selected menu item ID is 1
+                //code for action
+                tvTranslatedText3.setText("任何事物");
+                return true;  //menu item successfully handled
+            }
+
         }
         return super.onContextItemSelected(item); //pass menu item to the superclass implementation
     }
